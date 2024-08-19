@@ -1,4 +1,5 @@
 using LINQ;
+using LINQ.EmployeeHighestSalary;
 using System.Linq;
 using System.Text;
 
@@ -10,7 +11,7 @@ var app = builder.Build();
 app.MapGet("/EmployeeSalary", () =>
 {
 
-    Employee employee = new Employee();
+    LINQ.Employee employee = new LINQ.Employee();
     var empList = employee.GetEmpRecord();
 
     var empSalary = (from emp in empList
@@ -54,7 +55,7 @@ app.MapGet("/Student", () =>
                 new Standard(){ StandardID = 3, StandardName="Standard 3"}
             };
 
-    
+
 
     var groupJoin = standardList.GroupJoin(studentList,
                     std => std.StandardID,
@@ -65,7 +66,7 @@ app.MapGet("/Student", () =>
                         StandFullName = std.StandardName
                     });
 
-    StringBuilder str = new ();
+    StringBuilder str = new();
 
     foreach (var item in groupJoin)
     {
@@ -76,10 +77,34 @@ app.MapGet("/Student", () =>
         {
             str.Append(stud.StudentName);
             str.AppendLine();
-        }     
+        }
     }
 
     return str.ToString();
+
+
+});
+
+
+
+#endregion
+
+
+#region 
+
+app.MapGet("/EmployeeHighestSalary", () =>
+{
+
+    var departments = Department.GetAllDepartments();
+
+    var employees = LINQ.EmployeeHighestSalary.Employee.GetAllEmployees();
+
+    var empGroup = employees.GroupBy(s => new { s.Salary, s.ID }).Select(s => new { Salary = s.Key.Salary, ID = s.Key.ID }).OrderByDescending(o => o.Salary).Take(1);
+
+    foreach (var emp in empGroup)
+    {
+        Console.WriteLine("EmpID:" + emp.ID + ", Salary:" + emp.Salary);
+    }
 
 
 });
