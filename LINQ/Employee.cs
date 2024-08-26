@@ -7,11 +7,10 @@ public class Employee
         public string EmpName { get; set; }  
         public int Salary { get; set; }  
         public int EmpId { get; set; }  
-  
         public List<Employee> GetEmpRecord()  
         {  
-            List<Employee> emplist = new List<Employee>();  
-            emplist.Add(new Employee { EmpId = 1, EmpName = " Gopal", Salary = 10000 });  
+            List<Employee> emplist = new List<Employee>();
+            emplist.Add(new Employee { EmpId = 1, EmpName = "Gopal", Salary = 10000 });  
             emplist.Add(new Employee { EmpId = 2, EmpName = "Naresh", Salary = 3456 });  
             emplist.Add(new Employee { EmpId = 3, EmpName = "Hari", Salary = 14256 });  
             emplist.Add(new Employee { EmpId = 4, EmpName = "Pradeep", Salary = 14256 });  
