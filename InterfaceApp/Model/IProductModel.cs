@@ -5,5 +5,5 @@ public interface IProductModel
 
     bool HasOrderBeenCompleted { get; }
 
-    void ShitItem(CustomerModel customer);
+    void ShipItem(CustomerModel customer);
 }

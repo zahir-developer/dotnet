@@ -1,6 +1,6 @@
 namespace InterfaceApp.Models;
 
-public class PhysicalProductModel
+public class PhysicalProductModel : IProductModel
 {
     public string Title { get; set; } = string.Empty;
 
@@ -10,7 +10,7 @@ public class PhysicalProductModel
     {
         if(HasOrderBeenCompleted == false)
         {
-            Console.WriteLine($" { Title } order has been completed for the customer {customer.FirstName}");
+            Console.WriteLine($"Shipping { Title } order has been completed for the customer {customer.FirstName}");
             HasOrderBeenCompleted = true;
         }
     }
