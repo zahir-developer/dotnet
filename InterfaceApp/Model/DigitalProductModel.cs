@@ -6,19 +6,19 @@ public class DigitalProductModel : IDigitalProductModel
 
     public bool HasOrderBeenCompleted { get; private set; }
 
-    public int TotalMaxDownloads { get; private set; } = 5;
+    public int TotalRemainingDownloads { get; private set; } = 5;
 
     public void ShipItem(CustomerModel customer)
     {
         if(HasOrderBeenCompleted == false)
         {
             Console.WriteLine($"Emailing the { Title } order for the customer {customer.Email}");
-            TotalMaxDownloads -= 1;
+            TotalRemainingDownloads -= 1;
 
-            if(TotalMaxDownloads < 1)
+            if(TotalRemainingDownloads < 1)
             {
                 HasOrderBeenCompleted = true;
-                TotalMaxDownloads = 0;
+                TotalRemainingDownloads = 0;
             }
         }
     }

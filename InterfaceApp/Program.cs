@@ -14,6 +14,11 @@ internal class Program
         foreach(var product in physicalProducts)
         {
             product.ShipItem(customer);
+            if(product is IDigitalProductModel digitalProduct)
+            {
+                Console.WriteLine($"For the product { product.Title } you have {digitalProduct.TotalRemainingDownloads}");
+            }
+            
         }
 
         Console.ReadLine();
@@ -28,6 +33,7 @@ internal class Program
         result.Add(new PhysicalProductModel { Title = "TV" });
         //
         result.Add(new DigitalProductModel { Title = "Windows OS" });
+        result.Add(new DigitalProductModel { Title = "Office 365" });
 
 
 
