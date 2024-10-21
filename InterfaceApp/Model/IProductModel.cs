@@ -1,3 +1,5 @@
+using InterfaceApp.Models;
+
 namespace InterfaceApp;
 public interface IProductModel
 {

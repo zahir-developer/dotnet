@@ -1,6 +1,6 @@
 namespace InterfaceApp.Models;
 
-public class DigitalProductModel : IProductModel
+public class DigitalProductModel : IDigitalProductModel
 {
     public string Title { get; set; } = string.Empty;
 
