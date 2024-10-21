@@ -31,11 +31,13 @@ internal class Program
 
         result.Add(new PhysicalProductModel { Title = "Mobile phone" });
         result.Add(new PhysicalProductModel { Title = "TV" });
-        //
+
+        //Digital Product
         result.Add(new DigitalProductModel { Title = "Windows OS" });
         result.Add(new DigitalProductModel { Title = "Office 365" });
 
-
+        //Course Product
+        result.Add(new CourseProductModel{ Title = ".Net C#"});
 
         return result;
     }
