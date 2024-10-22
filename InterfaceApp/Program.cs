@@ -16,7 +16,7 @@ internal class Program
             product.ShipItem(customer);
             if(product is IDigitalProductModel digitalProduct)
             {
-                Console.WriteLine($"For the product { product.Title } you have {digitalProduct.TotalRemainingDownloads}");
+                Console.WriteLine($"For the product { product.Title } you have {customer.TotalRemainingDownloads}");
             }
             
         }
@@ -33,8 +33,8 @@ internal class Program
         result.Add(new PhysicalProductModel { Title = "TV" });
 
         //Digital Product
-        result.Add(new DigitalProductModel { Title = "Windows OS" });
-        result.Add(new DigitalProductModel { Title = "Office 365" });
+        result.Add(new DigitalProductModel(emailId: "zahir@ltimindtree.com") { Title = "Windows OS" });
+        result.Add(new DigitalProductModel(emailId: "zahir@ltimindtree.com") { Title = "Office 365" });
 
         //Course Product
         result.Add(new CourseProductModel{ Title = ".Net C#"});
@@ -48,7 +48,6 @@ internal class Program
             FirstName = "Zahir",
             LastName = "Hussain",
             City = "Chennai",
-            Email = "zahir@dotnet.com"
         };
     }
 }

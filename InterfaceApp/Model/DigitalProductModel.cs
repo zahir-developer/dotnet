@@ -6,19 +6,24 @@ public class DigitalProductModel : IDigitalProductModel
 
     public bool HasOrderBeenCompleted { get; private set; }
 
-    public int TotalRemainingDownloads { get; private set; } = 5;
+    public string EmailSubscriptionAddress { get; set; }
+
+    public DigitalProductModel(string emailId)
+    {
+        EmailSubscriptionAddress = emailId;
+    }
 
     public void ShipItem(CustomerModel customer)
     {
-        if(HasOrderBeenCompleted == false)
+        if (HasOrderBeenCompleted == false)
         {
-            Console.WriteLine($"Emailing the { Title } order for the customer {customer.Email}");
-            TotalRemainingDownloads -= 1;
+            Console.WriteLine($"Emailing the {Title} order for the customer {EmailSubscriptionAddress}");
+            customer.PurchaseDigitalProduct();
 
-            if(TotalRemainingDownloads < 1)
+            if (customer.TotalRemainingDownloads < 1)
             {
                 HasOrderBeenCompleted = true;
-                TotalRemainingDownloads = 0;
+                //TotalRemainingDownloads = 0;
             }
         }
     }
