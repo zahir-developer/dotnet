@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.18.2" />
-  </ItemGroup>
+	  <PackageReference Include="Azure.Identity" Version="1.13.1" />
+	  <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.18.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SBShared\SBShared.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\SBShared\SBShared.csproj" />
+	</ItemGroup>
 
 </Project>

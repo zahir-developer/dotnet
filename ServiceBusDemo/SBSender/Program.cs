@@ -1,10 +1,14 @@
 using SBSender.Components;
+using SBSender.Services;
+using SBShared.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddTransient<IQueueService, QueueService>();
 
 var app = builder.Build();
 
@@ -23,5 +27,13 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+var queueService = app.Services.GetService<IQueueService>();
+
+PersonModel person = new ();
+person.FirstName = "Zahir";
+person.LastName = "Hussain";
+
+//await queueService.SendMessageAsync<PersonModel>(new List<PersonModel> {person}, "serviceBusQueue");
 
 app.Run();
